@@ -9,7 +9,17 @@ public class Main {
         int quantity;
         String imported;
 
+        Books book = new Books();
+        Chocolate chocolate = new Chocolate();
+        Perfume perfume = new Perfume();
+        Medicine medicine = new Medicine();
+        Music music = new Music();
         Order order = new Order();
+        order.setBooks(book);
+        order.setChocolate(chocolate);
+        order.setPerfume(perfume);
+        order.setMedicine(medicine);
+        order.setMusic(music);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -38,7 +48,7 @@ public class Main {
                 quantity = scanner.nextInt();
             }
 
-            order.setOrder(selectedProduct(product, quantity, imported));
+            order.setOrder(selectedProduct(product, quantity, imported, book, chocolate, perfume, medicine, music));
 
             System.out.println("Would you like to add more to your order? (yes | no)");
             cont = scanner.next().toLowerCase();
@@ -57,7 +67,7 @@ public class Main {
 
     }
 
-    public static String selectedProduct(String product, int quantity, String imported){
+    public static String selectedProduct(String product, int quantity, String imported, Books book, Chocolate chocolate, Perfume perfume, Medicine medicine, Music music){
 
         String item = "";
         boolean needToBeImported = false;
@@ -67,19 +77,29 @@ public class Main {
         }
 
         if(product.toLowerCase().contains("book")){
-            Books book = new Books(quantity, needToBeImported, 10);
+            book.setQuantity(quantity);
+            book.setImported(needToBeImported);
+            book.setPrice(10);
             item = book.toString();
         }else if(product.toLowerCase().contains("chocolate")){
-            Chocolate chocolate = new Chocolate(quantity, needToBeImported, 1);
+            chocolate.setQuantity(quantity);
+            chocolate.setImported(needToBeImported);
+            chocolate.setPrice(1);
             item = chocolate.toString();
         }else if(product.toLowerCase().contains("perfume")){
-            Perfume perfume = new Perfume(quantity, needToBeImported, 50);
+            perfume.setQuantity(quantity);
+            perfume.setImported(needToBeImported);
+            perfume.setPrice(50);
             item = perfume.toString();
         }else if(product.toLowerCase().contains("medicine") || product.toLowerCase().contains("pills")){
-            Medicine medicine = new Medicine(quantity, needToBeImported, 100);
+            medicine.setQuantity(quantity);
+            medicine.setImported(needToBeImported);
+            medicine.setPrice(100);
             item = medicine.toString();
         }else if(product.toLowerCase().contains("music")){
-            Music music = new Music(quantity, needToBeImported, 5);
+            music.setQuantity(quantity);
+            music.setImported(needToBeImported);
+            music.setPrice(5);
             item = music.toString();
         }
 
