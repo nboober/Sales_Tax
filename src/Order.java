@@ -11,6 +11,12 @@ public class Order {
     private Music music;
 
     public Order(){
+        this.books = new Books();
+        this.chocolate = new Chocolate();
+        this.perfume = new Perfume();
+        this.medicine = new Medicine();
+        this.music = new Music();
+
     }
 
     ArrayList<String> order = new ArrayList<String>();
@@ -31,7 +37,7 @@ public class Order {
     }
 
     public double getTax() {
-        return this.getPerfume().getTax() + this.getMusic().getTax();
+        return perfume.getTax() + music.getTax();
     }
 
     public void setTax(double tax) {
@@ -40,52 +46,12 @@ public class Order {
 
     public double getTotal() {
 
-        return this.getBooks().getTotalPrice() + this.getChocolate().getTotalPrice() + this.getPerfume().getTotalPrice() + this.getMedicine().getTotalPrice() + this.getMusic().getTotalPrice();
+        return books.getTotalPrice() + chocolate.getTotalPrice() + perfume.getTotalPrice() + medicine.getTotalPrice() + music.getTotalPrice();
 
     }
 
     public void setTotal(int total) {
         this.total = total;
-    }
-
-    public Books getBooks() {
-        return books;
-    }
-
-    public void setBooks(Books books) {
-        this.books = books;
-    }
-
-    public Chocolate getChocolate() {
-        return chocolate;
-    }
-
-    public void setChocolate(Chocolate chocolate) {
-        this.chocolate = chocolate;
-    }
-
-    public Perfume getPerfume() {
-        return perfume;
-    }
-
-    public void setPerfume(Perfume perfume) {
-        this.perfume = perfume;
-    }
-
-    public Medicine getMedicine() {
-        return medicine;
-    }
-
-    public void setMedicine(Medicine medicine) {
-        this.medicine = medicine;
-    }
-
-    public Music getMusic() {
-        return music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
     }
 
     @Override
