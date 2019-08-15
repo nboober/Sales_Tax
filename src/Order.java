@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Order {
@@ -158,7 +159,12 @@ public class Order {
     @Override
     public String toString(){
 
-        return "------Receipt------\n" + this.getOrder() + "Sales Tax: " + this.getTax() + "\n" + "Total: " + this.getTotal();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String tax = formatter.format(this.getTax());
+        String total = formatter.format(this.getTotal());
+
+
+        return "------Receipt------\n" + this.getOrder() + "Sales Tax: " + tax + "\n" + "Total: " + total;
     }
 
 }
