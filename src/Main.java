@@ -110,8 +110,8 @@ public class Main {
             order.setMedicinePrice(100);
             item = order.getMedicine().toString();
 
-        //If music is found in the product variable this information is returned
-        }else if(product.toLowerCase().contains("music")){
+        //If music or cd is found in the product variable this information is returned
+        }else if(product.toLowerCase().contains("music") || product.toLowerCase().contains("cd")){
             order.setMusicQuantity(quantity);
             order.setMusicImport(needToBeImported);
             order.setMusicPrice(5);
