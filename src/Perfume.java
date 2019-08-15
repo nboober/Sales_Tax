@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Perfume{
 
     private int price;
@@ -63,10 +65,15 @@ public class Perfume{
 
     @Override
     public String toString(){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String total = formatter.format(this.getTotalPrice());
+        String price = formatter.format(this.getPrice());
+
+
         if(this.getQuantity() > 1){
-            return "Perfume" + ": " + "$" + this.getTotalPrice() + " (" + this.getQuantity() + " @ " + "$" + this.getPrice() + ")";
+            return "Perfume" + ": " + total + " (" + this.getQuantity() + " @ " + price + ")";
         }
-        return "Perfume" + ": " + "$" + this.getTotalPrice();
+        return "Perfume" + ": " + total;
     }
 
 }

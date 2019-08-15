@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Books{
 
     private int price;
@@ -53,9 +55,14 @@ public class Books{
 
     @Override
     public String toString(){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String total = formatter.format(this.getTotalPrice());
+        String price = formatter.format(this.getPrice());
+
+
         if(this.getQuantity() > 1){
-            return "Books" + ": " + "$" + this.getTotalPrice() + " (" + this.getQuantity() + " @ " + "$" + this.getPrice() + ")";
+            return "Books" + ": " + total + " (" + this.getQuantity() + " @ " + price + ")";
         }
-              return "Books" + ": " + "$" + this.getTotalPrice();
+        return "Books" + ": " + total;
     }
 }

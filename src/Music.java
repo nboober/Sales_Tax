@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Music{
 
     private int price;
@@ -63,10 +65,15 @@ public class Music{
 
     @Override
     public String toString(){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String total = formatter.format(this.getTotalPrice());
+        String price = formatter.format(this.getPrice());
+
+
         if(this.getQuantity() > 1){
-            return "Music CDs" + ": " + "$" + this.getTotalPrice() + " (" + this.getQuantity() + " @ " + "$" + this.getPrice() + ")";
+            return "Music CDs" + ": " + total + " (" + this.getQuantity() + " @ " + price + ")";
         }
-        return "Music CD" + ": " + "$" + this.getTotalPrice();
+        return "Music CD" + ": " + total;
     }
 
 }

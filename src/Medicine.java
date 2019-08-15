@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Medicine{
 
     private int price;
@@ -53,10 +55,15 @@ public class Medicine{
 
     @Override
     public String toString(){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String total = formatter.format(this.getTotalPrice());
+        String price = formatter.format(this.getPrice());
+
+
         if(this.getQuantity() > 1){
-            return "Medicine" + ": " + "$" + this.getTotalPrice() + " (" + this.getQuantity() + " @ " + "$" + this.getPrice() + ")";
+            return "Medicine" + ": " + total + " (" + this.getQuantity() + " @ " + price + ")";
         }
-        return "Medicine" + ": " + "$" + this.getTotalPrice();
+        return "Medicine" + ": " + total;
     }
 
 }

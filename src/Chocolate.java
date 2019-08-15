@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Chocolate{
 
     private int price;
@@ -53,10 +55,15 @@ public class Chocolate{
 
     @Override
     public String toString(){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String total = formatter.format(this.getTotalPrice());
+        String price = formatter.format(this.getPrice());
+
+
         if(this.getQuantity() > 1){
-            return "Chocolate" + ": " + "$" + this.getTotalPrice() + " (" + this.getQuantity() + " @ " + "$" + this.getPrice() + ")";
+            return "Chocolate" + ": " + total + " (" + this.getQuantity() + " @ " + price + ")";
         }
-        return "Chocolate" + ": " + "$" + this.getTotalPrice();
+        return "Chocolate" + ": " + total;
     }
 
 }
