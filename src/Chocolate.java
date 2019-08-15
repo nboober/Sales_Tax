@@ -17,6 +17,7 @@ public class Chocolate{
         this.setPrice(price);
     }
 
+    //This method gets the price of the Product. If it is imported then a 5% tax is added on to the total
     public double getPrice() {
         if(this.isImported()){
             return this.price * 1.05;
@@ -44,6 +45,7 @@ public class Chocolate{
         this.imported = imported;
     }
 
+    //This method gets the total price for this product. This method multiplies the price by the quantity
     public double getTotalPrice() {
 
         return this.getPrice() * this.getQuantity();
@@ -53,6 +55,7 @@ public class Chocolate{
         this.totalPrice = totalPrice;
     }
 
+    //This method is called in the Main Class in the selectedProduct method. This is the String stored in the Order array in teh Order Class
     @Override
     public String toString(){
         NumberFormat formatter = NumberFormat.getCurrencyInstance();

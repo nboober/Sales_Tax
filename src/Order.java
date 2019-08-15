@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Order {
 
+    //Variables
     private int total;
     private double tax;
     private Books books;
@@ -11,6 +12,7 @@ public class Order {
     private Medicine medicine;
     private Music music;
 
+    //When a new Order object is created all the sub products are created as new objects and linked to the order class through this constructor. This is a Composition relationship
     public Order(){
         books = new Books();
         chocolate = new Chocolate();
@@ -19,23 +21,27 @@ public class Order {
         music = new Music();
     }
 
+    //Order arrayList. This stores the information from the selectedProduct method in the Main class
     ArrayList<String> order = new ArrayList<String>();
 
+    //This Method returns the list of products stored in the order array
     public String getOrder() {
 
-        String total = "";
+        String list = "";
 
         for(String product : order){
-            total += product + "\n";
+            list += product + "\n";
         }
 
-        return total;
+        return list;
     }
 
+    //This method is what adds the product info to the order arrayList. This is called in the Main class
     public void setOrder(String order) {
         this.order.add(order);
     }
 
+    //Start of Object Setters and getters to store information from the Main Class for the Order class to reach
     public Books getBooks() {
         return books;
     }
@@ -136,8 +142,9 @@ public class Order {
     public void setMusicPrice(int price){
         music.setPrice(price);
     }
+    //End of Object Setters and Getters
 
-
+    //This method gets the tax information from the other classes
     public double getTax() {
         return perfume.getTax() + music.getTax();
     }
@@ -146,6 +153,7 @@ public class Order {
         this.tax = tax;
     }
 
+    //This method get the Total Price information from the other classes
     public double getTotal() {
 
         return books.getTotalPrice() + chocolate.getTotalPrice() + perfume.getTotalPrice() + medicine.getTotalPrice() + music.getTotalPrice();
@@ -156,6 +164,7 @@ public class Order {
         this.total = total;
     }
 
+    //This is the Final toString method called in the Main class. This is the Receipt print out
     @Override
     public String toString(){
 
