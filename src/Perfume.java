@@ -33,7 +33,7 @@ public class Perfume{
     //This method multiplies the price of the product by 10% to get the sales tax. This will be applied to the total
     public double getTax() {
 
-        return this.getPrice() * .1;
+        return (this.getPrice() * .1) * this.getQuantity();
     }
 
     public void setTax(int tax) {
